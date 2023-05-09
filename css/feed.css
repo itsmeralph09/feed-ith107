@@ -1,0 +1,103 @@
+body{
+/*display: flex;*/
+justify-content: center;
+align-items: center;
+background-color: #323142;
+}
+.container{
+border: 2px solid green;
+width: 60vw;
+/*height: 80vh;*/
+margin: auto;
+margin-top: 5vw;
+margin-bottom: 5vw;
+padding: 10px;
+padding-bottom: 30px;
+background: #e3e3e3;
+border-radius: 5px;
+
+}
+form{
+margin-bottom: 30px;
+}
+input{
+width: 30vw;
+margin-left: auto;
+margin-right: auto;
+height: 30px;
+}
+select{
+width: 60vw;
+margin-left: auto;
+margin-right: auto;
+height: 30px;
+}
+input[type="submit"]{
+width: 60.5vw;
+height: 40px;
+background: #f95959;
+border: none;
+color: white;
+}
+.title{
+text-align: center;
+}
+.input-filed{
+/*border: 2px solid yellow;*/
+width: 80%;
+margin-right: auto;
+margin-left: auto;
+margin-top: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.add-btn{
+	background: #f95959;
+	border: none;
+}
+.add-btn:hover{
+	background: none;
+	border: 2px solid #f95959;
+	color: #f95959;
+}
+span{
+	color: #f95959;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+select{
+	height: 30px;
+}
+.btn{
+	margin: 2px;
+}
+button{
+	margin: 5px;
+}
+.container1{
+border: 2px solid green;
+width: 60vw;
+/*height: 80vh;*/
+margin: auto;
+margin-top: 2.5vw;
+margin-bottom: 2.5vw;
+padding: 5px;
+background: #e3e3e3;
+border-radius: 5px;
+
+}
+.card{
+	padding: 3px;
+	margin-top: 1vw;
+	margin-bottom: 1vw;
+	margin-left: auto;
+	margin-right: auto;
+	width: 98%;
+}
+.post-area{
+	width: 95%;
+	border: 2px solid green;
+	margin-left: auto;
+	margin-right: auto;
+}
