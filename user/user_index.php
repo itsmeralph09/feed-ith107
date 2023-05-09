@@ -3,11 +3,11 @@ session_start();
 
 if (!isset($_SESSION['username'])) {
 	// $_SESSION['error_message'] = "You need to login first";
-	header('Location: login.php');
+	header('Location: /login.php');
 	exit;
 }
-if ($_SESSION['role'] == "admin") {
-	header('Location: index.php');
+if ($_SESSION['role'] != "user") {
+	header('Location: /login.php');
 	exit;
 }
 
