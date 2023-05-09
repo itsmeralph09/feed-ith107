@@ -71,7 +71,7 @@ $lname="";
 	
 
 	<div class="container">
-		<h1 class="title">EDIT USER</h1>
+		<h1 class="title">UPDATE PROFILE</h1>
 
 		<form method="post" action="user_update_profile.php">
 

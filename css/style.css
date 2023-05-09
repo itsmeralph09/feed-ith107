@@ -31,9 +31,16 @@ margin-left: auto;
 margin-right: auto;
 height: 30px;
 }
-input[type="submit"]{
-width: 60.5vw;
+input[type="file"]{
+width: 60vw;
 height: 40px;
+/*background: #f95959;*/
+border: 2px solid black;
+color: black;
+}
+input[type="submit"]{
+width: 60vw;
+height: 30px;
 background: #f95959;
 border: none;
 color: white;
@@ -61,7 +68,7 @@ align-items: center;
 }
 .add-btn:hover{
 	background: none;
-	border: 2px solid #f95959;
+	border: 1px solid #f95959;
 	color: #f95959;
 }
 span{

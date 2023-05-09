@@ -60,6 +60,7 @@ if (isset($_POST['submit'])) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CREATE</title>
+	<link rel="stylesheet" type="text/css" href="./bootstrap-5.0.2-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -95,6 +96,10 @@ if (isset($_POST['submit'])) {
 
 			<div class="input-filed">
 				<input type="password" name="confirm_password" placeholder="confirm password" value="<?php echo $confirm_password; ?>" required>
+			</div>
+
+			<div class="input-filed">
+				<input type="file" name="profile_pic" class="form-control" id="formFile" required>
 			</div>
 
 			<div class="input-filed">
