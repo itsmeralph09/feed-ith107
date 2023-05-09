@@ -41,127 +41,101 @@ $role="";
 			$fname = $_POST["fname"];
 			$lname = $_POST["lname"];
 			$username = $_POST["username"];
+			$new_pass= $_POST["new_password"];
+			$confirm_new_pass=$_POST["confirm_new_password"];
 			$role = $_POST["role"];
 
 
-		do{
-			$sql = "UPDATE tbl_users ". "SET fname='$fname', lname='$lname', username='$username', role='$role'". "WHERE id = $id";
-			$result = $conn->query($sql);
+			if (!empty($new_pass)) {
+							// check if tugma si new pass at confirm new pass
+					if ($new_pass==$confirm_new_pass) {
+						$final_pass = password_hash($new_pass, PASSWORD_DEFAULT);
 
-			if (!$result){
-				$errorMessage = "Invalid Query: ".$conn->error;
-				break;
-			}
+						$sql = "UPDATE tbl_users ". "SET fname='$fname', lname='$lname', username='$username', password='$final_pass'". "WHERE id = $id";
+						$result = $conn->query($sql);
 
-			$successMessage = "Student updated successfully";
-			// close na ang db connection
-			$conn->close();
+						header("location: ./index.php");
+						exit;
 
-			header("location: ./index.php");
-			exit;
-		}
-		while (true);
+					}else{
+						echo "New password and password confirmation do not match!";
+					}
+						
+			}else{
+					$sql = "UPDATE tbl_users ". "SET fname='$fname', lname='$lname', username='$username'". "WHERE id = $id";
+					$result = $conn->query($sql);
+					header("location: ./index.php");
+					exit;
+				}
+		
 	}
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset = "utf-8">
-	<meta name ="viewport" content ="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href = "./css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="./style.css">
-	<title>Edit Student</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>UPDATE</title>
+	<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-	<div class = "container my-5">
-		<h2>Edit Student</h2>
+	
 
-		<?php
-		if (!empty($errorMessage)){
-			echo"
+	<div class="container">
+		<h1 class="title">EDIT USER</h1>
 
-			<div class = 'alert alert-warning alert-dismissible fade show' role='alert'>
-			<strong>$errorMessage</strong>
-			<button type = 'button' class = 'btn-close' data-bs-dismiss='alert' aria-label='Close'</button>
-			</div>
-			";	
-		}
+		<form method="post" action="update.php">
 
-		?>
+			<?php if(isset($error)) { ?>
+				<div class="error"><p style="color: red"><?php echo $error; ?></p></div>				
+			<?php } ?> 
 
-		<form method = "post">
-			<input type="hidden" name="student-id" value="<?php echo $student_id; ?>">
-			<div class = "row mb-3">
-				<label class ="col-sm-3" col-form-label>Last Name</label>
-				<div class = "col-sm-6">
-					<input type = "text" class = "form-control" name = "last-name" value= "<?php echo $last_name; ?>">
-				</div>
-			</div>
-			<div class = "row mb-3">
-				<label class ="col-sm-3" col-form-label>First Name</label>
-				<div class = "col-sm-6">
-					<input type = "text" class = "form-control" name = "first-name" value= "<?php echo $first_name; ?>">
-				</div>
-			</div>
-			<div class = "row mb-3">
-				<label class ="col-sm-3" col-form-label>Extension Name</label>
-				<div class = "col-sm-6">
-					<input type = "text" class = "form-control" name = "extension-name" value= "<?php echo $extension_name; ?>">
-				</div>
-			</div>
-			<div class = "row mb-3">
-				<label class ="col-sm-3" col-form-label>Middle Name</label>
-				<div class = "col-sm-6">
-					<input type = "text" class = "form-control" name = "middle-name" value= "<?php echo $middle_name; ?>">
-				</div>
-			</div>
-			<div class = "row mb-3">
-				<label class ="col-sm-3" col-form-label>Email</label>
-				<div class = "col-sm-6">
-					<input type = "text" class = "form-control" name = "email" value= "<?php echo $email; ?>">
-				</div>
-			</div>
-			<div class = "row mb-3">
-				<label class ="col-sm-3" col-form-label>Phone Number</label>
-				<div class = "col-sm-6">
-					<input type = "text" class = "form-control" name = "phone-number" value= "<?php echo $phone_number; ?>">
-				</div>
-			</div>
-			<div class = "row mb-3">
-				<label class ="col-sm-3" col-form-label>Address</label>
-				<div class = "col-sm-6">
-					<input type = "text" class = "form-control" name = "address" value= "<?php echo $address; ?>">
-				</div>
+			<?php if(isset($success)) { ?>
+				<div class="error"><p style="color: green"><?php echo $success; ?></p></div>				
+			<?php } ?>
+
+			<input type="hidden" name="id" value="<?php echo $id; ?>"> 			
+
+			<div class="input-filed">
+				<input type="text" name="fname" placeholder="first name" value="<?php echo $fname; ?>" required>
 			</div>
 
-
-			<?php
-
-			if (!empty($successMessage)){
-				echo"
-				<div class = 'row mb-3'>
-					<div class ='offset-sm-3 col-sm-6'>
-						<div class='alert alert-success alert-dismissable fade show' role='alert'>
-					<strong>$successMessage</strong>
-					<button type = 'button' class = 'btn-close' data-bs-dismiss='alert' aria-label</button>
-						</div>
-					</div>
-				</div>
-
-				";
-			}
-			?>
-
-			<div class = "row mb-3">
-				<div class="offset-sm-3 d-grid">
-					<button type ="submit" class ="btn btn-primary">Submit</button>
-				</div>
-				<div class = "col-sm-3 d-grid">
-					<a class="btn btn-outline-secondary" href ="./index.php" role="button">Cancel</a>
-				</div>
+			<div class="input-filed">
+				<input type="text" name="lname" placeholder="last name" value="<?php echo $lname; ?>" required>
 			</div>
+
+			<div class="input-filed">
+				<input type="text" name="username" placeholder="username" value="<?php echo $username; ?>" required>
+			</div>
+
+			<div class="input-filed">
+				<input type="password" name="new_password" placeholder="new password, leave blank if don't want to change" value="" >
+			</div>
+
+			<div class="input-filed">
+				<input type="password" name="confirm_new_password" placeholder="confirm new password" value="" >
+			</div>
+
+			<div class="input-filed">
+				<select name="role" value="<?php echo $role; ?>" required>
+					<option value="<?php echo $role; ?>"><?php echo $role; ?></option>
+					<option value="admin">admin</option>
+					<option  value="user">user</option>
+				</select>
+			</div>		
+
+			<div class="input-filed">
+				<input type="submit" name="submit" value="Add">
+			</div>
+
+			<div class="input-filed">
+				<a href="./index.php">Back</a>
+			</div>
+
 		</form>
 	</div>
+
+
 </body>
 </html>

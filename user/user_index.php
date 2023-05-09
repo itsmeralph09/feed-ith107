@@ -20,8 +20,8 @@ if ($_SESSION['role'] != "user") {
 	<title>Index</title>
 	<!-- <link rel="stylesheet" type="text/css" href="./css/bootstrap.css"> -->
 	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-	<link rel="stylesheet" type="text/css" href="./bootstrap-5.0.2-dist/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap-5.0.2-dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 
 </head>
 <body>
@@ -31,7 +31,7 @@ if ($_SESSION['role'] != "user") {
 
 		<a class="btn btn-info mb-3 float-start" href="./user_update_profile.php" role="button">Update Profile</a>
 		<a class="btn btn-success mb-3 float-start" href="./feed.php" role="button">Feed</a>
-		<a class="btn btn-outline-secondary mb-3 float-end" href="./logout.php" role="button">Logout</a>
+		<a class="btn btn-outline-secondary mb-3 float-end" href="../logout.php" role="button">Logout</a>
 
 		<table class="table table-hover bg-light table-striped table-bordered">
 			<thead>
@@ -45,7 +45,7 @@ if ($_SESSION['role'] != "user") {
 				<tbody>
 				<?php
 
-				require 'dbconn.php';
+				require '../dbconn.php';
 
 				$sql = "SELECT * FROM tbl_users ORDER BY username ASC";
 

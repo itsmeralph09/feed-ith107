@@ -7,12 +7,12 @@ if (!isset($_SESSION['username'])) {
 }else{
 	$username = $_SESSION['username'];
 }
-if ($_SESSION['role'] != "user") {
+if ($_SESSION['role'] != "admin") {
 	header('Location: ../login.php');
 	exit;
 }
 
-require '../dbconn.php';
+require './dbconn.php';
 
 $id="";
 $fname="";
@@ -42,7 +42,7 @@ $lname="";
 				$sql = "UPDATE tbl_users ". "SET fname='$fname', lname='$lname', username='$username', password='$final_pass'". "WHERE id = $id";
 				$result = $conn->query($sql);
 
-				header("location: ./user_index.php");
+				header("location: ./index.php");
 				exit;
 
 			}else{
@@ -52,7 +52,7 @@ $lname="";
 		}else{
 			$sql = "UPDATE tbl_users ". "SET fname='$fname', lname='$lname', username='$username'". "WHERE id = $id";
 				$result = $conn->query($sql);
-				header("location: ./user_index.php");
+				header("location: ./index.php");
 				exit;
 		}
 		
@@ -65,13 +65,13 @@ $lname="";
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>UPDATE</title>
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 	
 
 	<div class="container">
-		<h1 class="title">EDIT USER</h1>
+		<h1 class="title">UPDATE PROFILE</h1>
 
 		<form method="post" action="user_update_profile.php">
 
@@ -121,7 +121,7 @@ $lname="";
 			</div>
 
 			<div class="input-filed">
-				<a href="./user_index.php">Back</a>
+				<a href="./index.php">Back</a>
 			</div>
 
 		</form>

@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 			if ($_SESSION['role'] == "admin") {
 				header('Location: index.php');				
 			} else{
-				header('Location: user_index.php');
+				header('Location: ./user/user_index.php');
 			}
 			exit;
 

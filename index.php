@@ -31,6 +31,7 @@ if ($_SESSION['role'] != "admin") {
 
 
 	<a class="add-btn btn btn-success mb-3" href="./create.php" role="button">Create</a>
+	<!-- <a class="btn btn-info mb-3 float-start" href="./update_profile.php" role="button">Update Profile</a> -->
 	<a class="btn btn-outline-secondary mb-3 float-end" href="./logout.php" role="button">Logout</a>
 		<table class="table table-hover bg-light table-striped table-bordered">
 			<thead>
@@ -67,7 +68,7 @@ if ($_SESSION['role'] != "admin") {
 						<td>$row[username]</td>
 						<td>$row[role]</td>
 						<td>
-							<a class='btn btn-primary btn-sm' href='./update1.php?id=$row[id]'>Update</a>
+							<a class='btn btn-primary btn-sm' href='./update.php?id=$row[id]'>Update</a>
 							<a class='btn btn-danger btn-sm' href='./delete.php?id=$row[id]'>Delete</a>
 
 
