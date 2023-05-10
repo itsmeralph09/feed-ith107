@@ -74,7 +74,7 @@ if(isset($_POST['submit'])){
 
 				include '../dbconn.php';
 
-				$sql = "SELECT * FROM tbl_post";
+				$sql = "SELECT * FROM tbl_post ORDER BY DATE(date_posted) DESC";
 
 				$result = mysqli_query($conn, $sql);
 
@@ -89,7 +89,7 @@ if(isset($_POST['submit'])){
 					 <div class='card'>
 						 <div class='username-date'>
 						 <p class='float-start'>$row[username]</p>
-						 <p class='float-end'>$row[date]</p></div>
+						 <p class='float-end'>$row[date_posted]</p></div>
 						 <div class='post-area'><p>$row[post]</p></div>
 					</div>
 					";
