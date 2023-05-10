@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
 			</div>
 
 			<div class="input-filed">
-				<input type="file" name="profile_pic" class="form-control" id="formFile" required>
+				<input type="file" name="profile_pic" class="form-control" id="formFile">
 			</div>
 
 			<div class="input-filed">

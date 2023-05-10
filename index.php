@@ -52,34 +52,58 @@ if ($_SESSION['role'] != "admin") {
 
 				$result = mysqli_query($conn, $sql);
 
-				if (!$result){
+				// if (!$result){
 
-					die("Invalid query: ");
+				// 	die("Invalid query: ");
 
-				}
+				// }
 
-				while ($row = mysqli_fetch_assoc($result)) {
-					echo "
+				// while ($row = mysqli_fetch_assoc($result)) {
+				// 	echo "
 
-					<tr>
-						<td>$row[id]</td>
-						<td>$row[fname]</td>
-						<td>$row[lname]</td>
-						<td>$row[username]</td>
-						<td>$row[role]</td>
-						<td>
-							<a class='btn btn-primary btn-sm' href='./update.php?id=$row[id]'>Update</a>
-							<a class='btn btn-danger btn-sm' href='./delete.php?id=$row[id]'>Delete</a>
-
-
+					// <tr>
+					// 	<td>$row[id]</td>
+					// 	<td>$row[fname]</td>
+					// 	<td>$row[lname]</td>
+					// 	<td>$row[username]</td>
+					// 	<td>$row[role]</td>
+					// 	<td>
+					// 		<a class='btn btn-primary btn-sm' href='./update.php?id=$row[id]'>Update</a>
+					// 		<a class='btn btn-danger btn-sm' href='./delete.php?id=$row[id]'>Delete</a>
 
 
 
-						</td>
-					</tr>
 
-					";
-				}
+
+					// 	</td>
+					// </tr>
+
+				// 	";
+				// }
+		if (mysqli_num_rows($result) > 0){
+	    // Output the results in a table
+	   
+	    $num = 1;
+	    while($row = mysqli_fetch_assoc($result)) { ?>
+
+	
+				<tr>
+				<td><?php echo $num; ?></td>
+				<td><?php echo $row['fname']; ?></td>
+				<td><?php echo $row['lname']; ?></td>
+				<td><?php echo $row['username']; ?></td>
+				<td><?php echo $row['role']; ?></td>
+				<td>
+				<a class='btn btn-primary btn-sm' href='./update.php?id=<?php echo $row['id']; ?>'>Update</a>
+				<a class='btn btn-danger btn-sm' href='./delete1.php?id=<?php echo $row['id']; ?>'>Delete</a>
+				</td>
+				</tr>
+				
+	    <?php $num++;}
+	    echo "</table>";
+		} else {
+		    echo "0 results";
+		}
 
 				mysqli_close($conn);
 				?>
